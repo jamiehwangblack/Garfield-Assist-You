@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>GAY</title>
+        <style>
+            h1 {
+                font-size: 50px;
+            }
+            body {
+                text-align: center;
+            }
+            label {
+                font-weight: bold;
+                font-size: 30px;
+            }
+            button {
+                display: inline-block;
+                margin: 20px auto;
+                font-size: 20px;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+            input {
+                font-size: 16px;
+                padding: 10px 12px;
+                border: 2px solid #ccc;
+                border-radius: 8px;
+                outline: none;
+                align-items: center;
+                justify-content: center;
+            }
+            img {
+                margin: 10px;
+            }
+            hr {
+                width: 400px;
+                margin: 10px auto;
+                color: grey;
+            }
+            .highlight-mild {
+                display: inline-block;
+                background-color: moccasin;
+                padding: 8px 10px;
+                border-radius: 5px;
+            }
+            .highlight-moderate {
+                display: inline-block;
+                background-color: peachpuff;
+                padding: 8px 10px;
+                border-radius: 5px;
+            }
+            .highlight-severe {
+                display: inline-block;
+                background-color: lightsalmon;
+                padding: 8px 10px;
+                border-radius: 5px;
+            }
+            .page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                line-height: 0.5;
+            }
+            .container {
+                width: 500px;
+                margin: 5px auto;
+                text-align: left;
+                line-height: 1.5;
+            }
+            #stressInput {
+                display: flex;
+                justify-content: center;
+                gap: 1px;
+                align-items: center;
+            }
+            #sleepInput {
+                display: flex;
+                justify-content: center;
+            }
+            #noteInput {
+                display: flex;
+                justify-content: center;
+            }
+            #garfSays {
+                display: block;
+                font-size: 30px;
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
+            #circle {
+                display: none;
+                width: 100px;
+                height: 100px;
+                background-color: orange;
+                border-radius: 50%;
+                margin: 150px auto;
+                transition: transform 4s ease-in-out;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page">
+            <h1> Garfield Assist You </h1>
+            
+            <img 
+                src="https://yangdongiaws.s3.us-east-2.amazonaws.com/album1/garf.svg"
+                alt="garfield"
+                width="300">
+
+            <label id="garfSays"> </label>
+
+            <div id="circle"></div>
+
+            <div id="sleepInput">
+                <button onclick="sleepActivity('1', 'good')">Good</button>
+                <button onclick="sleepActivity('2', 'alright')">Alright</button>
+                <button onclick="sleepActivity('3', 'poor')">Poor</button>
+                <button onclick="sleepActivity('4', 'awful')">Awful</button>
+            </div>
+
+            <div id="stressInput">
+                <input type="number" id="stress" min="0" max="10">
+                <button onclick="stressActivity()"> Submit </button>
+            </div>
+
+            <div id="painInput">
+                <input type="number" id="pain" min="1" max="10">
+                <button onclick="painActivity()"> Submit </button>
+            </div>
+
+            <div id="fatigueInput">
+                <input type="number" id="fatigue" min="1" max="10">
+                <button onclick="fatigueActivity()"> Submit </button>
+            </div>
+
+            <div id="noteInput">
+                <input type="text" id="note">
+                <button onclick="noteActivity()"> Submit</button>
+            </div>
+
+            <div id="stressGuide">
+                <hr>
+                <div class="highlight-mild">
+                    <b> MILD </b>
+                </div>
+                <div class="container">
+                    <b> 1) </b>Everything is OK. I'm doing great. <br>
+                    <b> 2) </b>I'm a little stressed, but I'm doing good. <br>
+                    <b> 3) </b>I'm a little stressed, but I'm coping. <br>
+                </div>
+
+                <div class="highlight-moderate">
+                    <b> MODERATE </b>
+                </div>
+                <div class="container">
+                    <b> 4) </b>I'm stressed. I think I'm OK, but it could go either way. <br>
+                    <b> 5) </b>I'm stressed. I feel wound up or disassociated. It's difficult to focus. <br>
+                    <b> 6) </b>I'm upset. It's very difficult to redirect my thoughts to anything else. <br>
+                </div>
+
+                <div class="highlight-severe">
+                    <b> SEVERE </b>
+                </div>
+                <div class="container">
+                    <b> 7) </b>I'm upset. I can't focus on anything. I want to cry. <br>
+                    <b> 8) </b>I'm very upset. I'm having intrusive thoughts. <br>
+                    <b> 9) </b>I'm very upset and overwhelmed. I might act on my intrusive thoughts. <br>
+                    <b> 10) </b>I'm having a panic attack or a meltdown. I need help. <br>
+                </div>
+                <hr>
+            </div>
+
+            <div id="painGuide">
+                <hr>
+                <div class="highlight-mild">
+                    <b> MILD </b>
+                </div>
+                <div class="container">
+                    <b> 1) </b>I am not in pain, or I hardly notice any pain. <br>
+                    <b> 2) </b>I notice some pain, but it does not interfere with any activities. <br>
+                    <b> 3) </b>I am somewhat distracted or inconvenienced by my pain. <br>
+                </div>
+                <div class="highlight-moderate">
+                    <b> MODERATE </b>
+                </div>
+                <div class="container">
+                    <b> 4) </b>I am distracted by my pain. I can do usual activities with some difficulty. <br>
+                    <b> 5) </b>My pain interrupts usual activities. I am having a hard time keeping up. <br>
+                    <b> 6) </b>My pain is hard to ignore. I can't keep up with my current activity. <br>
+                </div>
+                <div class="highlight-severe">
+                    <b> SEVERE </b>
+                </div>
+                <div class="container">
+                    <b> 7) </b>My pain is the focus of my attention. I am avoiding most activities. <br>
+                    <b> 8) </b>My pain is awful. It's difficult to do anything. <br>
+                    <b> 9) </b>My pain is unbearable. I am unable to do anything. <br>
+                    <b> 10) </b>My pain is as bad as it gets. Nothing else matters. <br>
+                </div>
+                <hr>
+            </div>
+
+            <div id="fatigueGuide">
+                <hr>
+                <div class="highlight-mild">
+                    <b> MILD </b>
+                </div>
+                <div class="container">
+                    <b> 1) </b>I am not tired, or I hardly notice any fatigue. <br>
+                    <b> 2) </b>I am a little tired, but it does not interfere with any activities. <br>
+                    <b> 3) </b>I am tired, but I can do activities outside with some difficulty. <br>
+                </div>
+                <div class="highlight-moderate">
+                    <b> MODERATE </b>
+                </div>
+                <div class="container">
+                    <b> 4) </b>I can work/study with some difficulty. Outside activity is over-exertion. <br>
+                    <b> 5) </b>It's hard to focus my mind. I can work/study, but with much difficulty. <br>
+                    <b> 6) </b>I am too tired to work or study at all. Preparing a meal is difficult. <br>
+                </div>
+                <div class="highlight-severe">
+                    <b> SEVERE </b>
+                </div>
+                <div class="container">
+                    <b> 7) </b>I can sit, stand, or walk for short periods, but I soon need to lie down. <br>
+                    <b> 8) </b>I am able to sit up or walk with some difficulty. It is difficult to eat. <br>
+                    <b> 9) </b>I can only sit, stand, and walk if necessary. It is difficult to eat or talk. <br>
+                    <b> 10) </b>I can barely sit up on my own. I need assistance getting out of bed. <br>
+                </div>
+                <hr>
+            </div>
+
+
+            <script src="script.js"></script>
+        </div>
+    </body>
+</html>
