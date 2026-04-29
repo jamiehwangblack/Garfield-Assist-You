@@ -14,13 +14,14 @@ window.onload = function() {
     document.getElementById("fatigueInput").style.display = "none";
     document.getElementById("sleepInput").style.display = "none";
     document.getElementById("noteInput").style.display = "none";
-    //document.getElementById("skipButton").style.display = "none";
+    document.getElementById("skipButton").style.display = "none";
     document.getElementById("garfSays").style.display = "block";
 
     timeCheck();
 }
 
 function stressAsk() {
+    document.getElementById("skipButton").style.display = "none";
     document.getElementById("garfSays").innerText = "What is your current stress level from 1 to 10?";
     document.getElementById("stressInput").style.display = "block"; 
     document.getElementById("stressGuide").style.display = "block";
