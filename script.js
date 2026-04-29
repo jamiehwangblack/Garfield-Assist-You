@@ -33,6 +33,7 @@ function sleep(ms) {
 async function sleepAsk() {
     document.getElementById("garfSays").innerText = "How did you sleep?";
     document.getElementById("sleepInput").style.display = "block";
+    document.getElementById("skipButton").style.display = "block";
 }
 
 async function sleepActivity(sleepQualityNum, sleepQuality) {
