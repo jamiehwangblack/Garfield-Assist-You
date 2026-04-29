@@ -60,8 +60,8 @@ async function sleepActivity(sleepQualityNum, sleepQuality) {
 }
 
 async function timeCheck() {
-    sleepValue = '-';
-    sleepValueNum = '-';
+    sleepValue = ' ';
+    sleepValueNum = ' ';
     const hour = new Date().getHours();
     let time;
     if(hour >= 5 && hour < 12){
