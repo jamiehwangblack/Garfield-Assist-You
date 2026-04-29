@@ -2,8 +2,10 @@ let stressValue;
 let painValue;
 let fatigueValue;
 let sleepValueNum;
-let sleepValue;
+let sleepValue; // = '';
 let noteText;
+let handPainValue = '';
+let backPainValue = '';
 
 window.onload = function() {
     document.getElementById("painGuide").style.display = "none";
@@ -15,6 +17,7 @@ window.onload = function() {
     document.getElementById("sleepInput").style.display = "none";
     document.getElementById("noteInput").style.display = "none";
     document.getElementById("skipButton").style.display = "none";
+    document.getElementById("painLocation").style.display = "none";
     document.getElementById("garfSays").style.display = "block";
 
     timeCheck();
@@ -149,9 +152,7 @@ async function painWrong(){
     document.getElementById("painGuide").style.display = "none";
     document.getElementById("garfSays").innerText = "Try again.";
     await sleep(2000);
-    document.getElementById("garfSays").innerText = "What is your current pain level from 1 to 10?";
-    document.getElementById("painInput").style.display = "block";
-    document.getElementById("painGuide").style.display = "block";
+    painCheck();
 }
 
 async function painActivity(){
@@ -166,8 +167,27 @@ async function painActivity(){
     else{
     painValue = parseInt(document.getElementById("pain").value);
     await sleep(2000);
-    fatigueCheck();
+    painLocationCheck();
     }
+}
+
+async function painLocationCheck() {
+    document.getElementById("garfSays").innerText = "Where do you feel pain?";
+    document.getElementById("painLocation").style.display = "block";
+    // skip button
+}
+
+async function painLocationActivity(painWhere) {
+    if(painWhere = 'hand'){
+        handPainValue = 'O'
+    }
+    else if(painWhere = 'back'){
+        backPainValue = 'O'
+    }
+    else{
+        return;
+    }
+    fatigueCheck();
 }
 
 async function fatigueCheck(){
@@ -210,12 +230,12 @@ async function noteActivity(){
     noteText = document.getElementById("note").value;
     document.getElementById("noteInput").style.display = "none";
     document.getElementById("garfSays").innerText = "Got it.";
-    await sendToSheet(sleepValue, sleepValueNum, stressValue, painValue, fatigueValue, noteText);
+    await sendToSheet(sleepValue, sleepValueNum, stressValue, painValue, fatigueValue, noteText, handPainValue, backPainValue);
     document.getElementById("garfSays").innerText = "Data sent successfully! Take care.";
 }
 
-async function sendToSheet(sleep, sleepNum, stress, pain, fatigue, note) {
-    const url = "https://script.google.com/macros/s/AKfycbxn7sVXly9QVZPKQa6oXBdEyQK3jzwboZrH6feUtEc_y9u8FC95qR2ddMRdBIbtJBeN/exec";
+async function sendToSheet(sleep, sleepNum, stress, pain, fatigue, note, hand, back) {
+    const url = "https://script.google.com/macros/s/AKfycbxM1pjEpCU2PfgP6zoFyIlywu1OmpnBfr0lUNIvsIpjjyA9KCNINGnSu5n_aBWN75fNsg/exec";
 
     const formData = new URLSearchParams();
     formData.append("sleep", sleep);
@@ -224,6 +244,8 @@ async function sendToSheet(sleep, sleepNum, stress, pain, fatigue, note) {
     formData.append("pain", pain);
     formData.append("fatigue", fatigue);
     formData.append("note", note);
+    formData.append("hand", hand);
+    formData.append("back", back);
 
     try {
         await fetch(url, {
