@@ -14,16 +14,23 @@ window.onload = function() {
     document.getElementById("fatigueInput").style.display = "none";
     document.getElementById("sleepInput").style.display = "none";
     document.getElementById("noteInput").style.display = "none";
+    document.getElementById("skipButton").style.display = "none";
     document.getElementById("garfSays").style.display = "block";
 
-    stressCheck();
-};
+    timeCheck();
+}
+
+function stressAsk() {
+    document.getElementById("garfSays").innerText = "What is your current stress level from 1 to 10?";
+    document.getElementById("stressInput").style.display = "block"; 
+    document.getElementById("stressGuide").style.display = "block";
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function sleepCheck() {
+async function sleepAsk() {
     document.getElementById("garfSays").innerText = "How did you sleep?";
     document.getElementById("sleepInput").style.display = "block";
 }
@@ -36,12 +43,10 @@ async function sleepActivity(sleepQualityNum, sleepQuality) {
 
     await sleep(2000);
 
-    document.getElementById("garfSays").innerText = "What is your current stress level from 1 to 10?";
-    document.getElementById("stressInput").style.display = "block"; 
-    document.getElementById("stressGuide").style.display = "block";
+    stressAsk();
 }
 
-async function stressCheck() {
+async function timeCheck() {
     const hour = new Date().getHours();
     let time;
     if(hour >= 5 && hour < 12){
@@ -65,12 +70,10 @@ async function stressCheck() {
     document.getElementById("garfSays").innerText = greeting;
     await sleep(2000);
     if(time === "morning") {
-        sleepCheck();
+        sleepAsk();
         return;
     }
-    document.getElementById("garfSays").innerText = "What is your current stress level from 1 to 10?";
-    document.getElementById("stressInput").style.display = "block";
-    document.getElementById("stressGuide").style.display = "block";
+    stressAsk();
 }
 
 async function stressWrong(){

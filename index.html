@@ -97,6 +97,10 @@
                 text-align: left;
                 line-height: 1.5;
             }
+            #skipButton {
+                display: flex;
+                justify-content: center;
+            }
             #stressInput {
                 display: flex;
                 justify-content: center;
@@ -131,7 +135,7 @@
 
     <body>
         <div class="page">
-            <h1> Garfield Assist You (v2.1) </h1>
+            <h1> Garfield Assist You (v2.2) </h1>
             
             <img 
                 src="https://yangdongiaws.s3.us-east-2.amazonaws.com/album1/garf.svg"
@@ -141,6 +145,10 @@
             <label id="garfSays"> </label>
 
             <div id="circle"></div>
+
+            <div id="skipButton">
+                <button onclick="stressAsk()">Skip</button>
+            </div>
 
             <div id="sleepInput">
                 <button onclick="sleepActivity('1', 'good')">Good</button>
