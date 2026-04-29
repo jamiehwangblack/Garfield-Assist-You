@@ -108,7 +108,7 @@
                 justify-content: center;
             }
             #skipButton {
-                display: block;
+                display: flex;
                 justify-content: center;
             }
             #noteInput {
@@ -135,7 +135,7 @@
 
     <body>
         <div class="page">
-            <h1> Garfield Assist You (v2.2.5) </h1>
+            <h1> Garfield Assist You (v2.2.6) </h1>
             
             <img 
                 src="https://yangdongiaws.s3.us-east-2.amazonaws.com/album1/garf.svg"
@@ -146,15 +146,15 @@
 
             <div id="circle"></div>
 
-            <div id="skipButton">
-                <button onclick="stressAsk()">Skip</button>
-            </div>
-
             <div id="sleepInput">
                 <button onclick="sleepActivity('1', 'good')">Good</button>
                 <button onclick="sleepActivity('2', 'alright')">Alright</button>
                 <button onclick="sleepActivity('3', 'poor')">Poor</button>
                 <button onclick="sleepActivity('4', 'awful')">Awful</button>
+            </div>
+
+            <div id="skipButton">
+                <button onclick="stressAsk()">Skip</button>
             </div>
 
             <div id="stressInput">

@@ -42,6 +42,7 @@ async function sleepActivity(sleepQualityNum, sleepQuality) {
     sleepValueNum = sleepQualityNum;
     sleepValue = sleepQuality;
     document.getElementById("sleepInput").style.display = "none";
+    document.getElementById("skipButton").style.display = "none";
     document.getElementById("garfSays").innerText = "Okay.";
 
     await sleep(2000);
