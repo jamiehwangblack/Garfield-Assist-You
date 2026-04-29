@@ -182,7 +182,7 @@ async function painActivity(){
 async function painLocationCheck() {
     document.getElementById("garfSays").innerText = "Where do you feel pain?";
     document.getElementById("painLocation").style.display = "block";
-    document.getElementById("painSubmit").style.display = "block";
+    document.getElementById("painLocationSubmit").style.display = "block";
     // skip button
 }
 
