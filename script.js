@@ -4,13 +4,13 @@ let fatigueValue;
 let sleepValueNum;
 let sleepValue;
 let noteText;
-let handPainValue;
-let backPainValue;
-let feetPainValue;
-let legPainValue;
-let hipPainValue;
-let headPainValue;
-let stomachPainValue;
+let handPainValue=' ';
+let backPainValue=' ';
+let feetPainValue=' ';
+let legPainValue=' ';
+let hipPainValue=' ';
+let headPainValue=' ';
+let stomachPainValue=' ';
 
 window.onload = function() {
     document.getElementById("painGuide").style.display = "none";
@@ -60,8 +60,8 @@ async function sleepActivity(sleepQualityNum, sleepQuality) {
 }
 
 async function timeCheck() {
-    sleepValue = ' ';
-    sleepValueNum = ' ';
+    sleepValue = '-';
+    sleepValueNum = '-';
     const hour = new Date().getHours();
     let time;
     if(hour >= 5 && hour < 12){
@@ -296,6 +296,3 @@ async function sendToSheet(sleep, sleepNum, stress, pain, fatigue, note, hand, b
         console.error("Error:", error);
     }
 }
-
-// select pain area - hand, back, feet, etc
-// work on mobile UI
