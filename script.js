@@ -14,7 +14,7 @@ window.onload = function() {
     document.getElementById("fatigueInput").style.display = "none";
     document.getElementById("sleepInput").style.display = "none";
     document.getElementById("noteInput").style.display = "none";
-    document.getElementById("skipButton").style.display = "none";
+    //document.getElementById("skipButton").style.display = "none";
     document.getElementById("garfSays").style.display = "block";
 
     timeCheck();
