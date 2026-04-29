@@ -23,6 +23,7 @@ window.onload = function() {
     document.getElementById("noteInput").style.display = "none";
     document.getElementById("skipButton").style.display = "none";
     document.getElementById("painLocation").style.display = "none";
+    document.getElementById("painLocationSubmit").style.display = "none";
     document.getElementById("garfSays").style.display = "block";
 
     timeCheck();
@@ -181,43 +182,43 @@ async function painActivity(){
 async function painLocationCheck() {
     document.getElementById("garfSays").innerText = "Where do you feel pain?";
     document.getElementById("painLocation").style.display = "block";
+    document.getElementById("painSubmit").style.display = "block";
     // skip button
 }
 
-async function painLocationActivity(painWhere) {
-    handPainValue = ' ';
-    backPainValue = ' ';
-    feetPainValue = ' ';
-    legPainValue = ' ';
-    hipPainValue = ' ';
-    headPainValue = ' ';
-    stomachPainValue = ' ';
-
-    if(painWhere = 'hand'){
-        handPainValue = 'O';
+async function painLocationActivity(painWhere, btn) {
+    if(painWhere === 'hand'){
+        handPainValue = handPainValue === 'O' ? ' ' : 'O';
     }
-    else if(painWhere = 'back'){
-        backPainValue = 'O';
+    else if(painWhere === 'back'){
+        backPainValue = backPainValue === 'O' ? ' ' : 'O';
     }
-    else if(painWhere = 'feet'){
-        feetPainValue = 'O';
+    else if(painWhere === 'feet'){
+        feetPainValue = feetPainValue === 'O' ? ' ' : 'O';
     }
-    else if(painWhere = 'leg'){
-        legPainValue = 'O';
+    else if(painWhere === 'leg'){
+        legPainValue = legPainValue === 'O' ? ' ' : 'O';
     }
-    else if(painWhere = 'hip'){
-        hipPainValue = 'O';
+    else if(painWhere === 'hip'){
+        hipPainValue = hipPainValue === 'O' ? ' ' : 'O';
     }
-    else if(painWhere = 'head'){
-        headPainValue = 'O';
+    else if(painWhere === 'head'){
+        headPainValue = headPainValue === 'O' ? ' ' : 'O';
     }
-    else if(painWhere = 'stomach'){
-        stomachPainValue = 'O';
+    else if(painWhere === 'stomach'){
+        stomachPainValue = stomachPainValue === 'O' ? ' ' : 'O';
     }
     else{
         return;
     }
+    
+    btn.classList.toggle("selected");
+}
+
+async function painSubmit(){
     document.getElementById("painLocation").style.display = "none";
+    document.getElementById("painLocationSubmit").style.display = "none";
+
     fatigueCheck();
 }
 

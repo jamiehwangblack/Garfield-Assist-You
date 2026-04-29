@@ -97,6 +97,9 @@
                 text-align: left;
                 line-height: 1.5;
             }
+            .selected {
+                background-color: orange;
+            }
             #stressInput {
                 display: flex;
                 justify-content: center;
@@ -116,6 +119,10 @@
                 justify-content: center;
             }
             #painLocation {
+                display: flex;
+                justify-content: center;
+            }
+            #painLocationSubmit {
                 display: flex;
                 justify-content: center;
             }
@@ -139,7 +146,7 @@
 
     <body>
         <div class="page">
-            <h1> Garfield Assist You (v3.1) </h1>
+            <h1> Garfield Assist You (v3.2) </h1>
             
             <img 
                 src="https://yangdongiaws.s3.us-east-2.amazonaws.com/album1/garf.svg"
@@ -172,13 +179,17 @@
             </div>
 
             <div id="painLocation">
-                <button onclick="painLocationActivity('hand')">Hand</button>
-                <button onclick="painLocationActivity('back')">Back</button>
-                <button onclick="painLocationActivity('feet')">Feet</button>
-                <button onclick="painLocationActivity('leg')">Leg</button>
-                <button onclick="painLocationActivity('hip')">Hip</button>
-                <button onclick="painLocationActivity('head')">Head</button>
-                <button onclick="painLocationActivity('stomach')">Stomach</button>
+                <button onclick="painLocationActivity('hand', this)">Hand</button>
+                <button onclick="painLocationActivity('back', this)">Back</button>
+                <button onclick="painLocationActivity('feet', this)">Feet</button>
+                <button onclick="painLocationActivity('leg', this)">Leg</button>
+                <button onclick="painLocationActivity('hip', this)">Hip</button>
+                <button onclick="painLocationActivity('head', this)">Head</button>
+                <button onclick="painLocationActivity('stomach', this)">Stomach</button>
+            </div>
+
+            <div id="painLocationSubmit">
+                <button onclick="painSubmit()"> Submit </button>
             </div>
 
             <div id="fatigueInput">
