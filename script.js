@@ -101,11 +101,12 @@ async function stressWrong(){
 }
 
 async function stressActivity() {
-    const circle = document.getElementById("circle");
+    // add breathing exercise as separate function after data log?
+    // const circle = document.getElementById("circle");
 
     document.getElementById("stressGuide").style.display = "none";
     document.getElementById("stressInput").style.display = "none";
-    document.getElementById("circle").style.display = "block";
+    // document.getElementById("circle").style.display = "block";
 
     let stress = document.getElementById("stress").value;
 
@@ -121,15 +122,15 @@ async function stressActivity() {
     }
     else if(stress==1) {
     stressValue = parseInt(document.getElementById("stress").value);
-    document.getElementById("garfSays").innerText = "Let's take " + stress + " deep breath.";   
+    //document.getElementById("garfSays").innerText = "Let's take " + stress + " deep breath.";   
     await sleep(1000);
     }
     else{
     stressValue = parseInt(document.getElementById("stress").value);
-    document.getElementById("garfSays").innerText = "Let's take " + stress + " deep breaths.";   
+    //document.getElementById("garfSays").innerText = "Let's take " + stress + " deep breaths.";   
     await sleep(1000);
     }
-    document.getElementById("garfSays").innerText = "Ready?";
+    /*document.getElementById("garfSays").innerText = "Ready?";
     await sleep(1000);
 
     for(let i = 0; i < stress; i++) {
@@ -144,7 +145,7 @@ async function stressActivity() {
     }
     
     document.getElementById("circle").style.display = "none";
-    document.getElementById("garfSays").innerText = "Good Job!";
+    document.getElementById("garfSays").innerText = "Good Job!"; */
     await sleep(1000);
     painCheck();
 }
